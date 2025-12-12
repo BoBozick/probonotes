@@ -8,4 +8,4 @@ description = "Style for mathematical notes with theorem environment and mathema
 keywords = ["style", "styling", "notes", "math", "mathematics",  "notation", "theorem", "environment"]
 disciplines = ["computer-science", "engineering", "mathematics", "physics", "education"]
 categories = ["components"]
-compiler = "0.14.0"
+compiler = "0.14.1"
