@@ -1,0 +1,1 @@
+This is a Typst styling package for mathematical notes with theorem environment and mathematical notation.
