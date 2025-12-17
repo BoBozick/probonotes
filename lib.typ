@@ -14,7 +14,6 @@
   warning-box,
   tip-box,
   note-box,
-  important-box,
   remark-box, // Added
 
   // Texts

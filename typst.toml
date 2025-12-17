@@ -1,6 +1,6 @@
 [package]
 name = "probonotes"
-version = "0.1.2"
+version = "0.1.3"
 entrypoint = "lib.typ"
 authors = ["BoBozick"]
 license = "MIT"
@@ -8,4 +8,4 @@ description = "Style for mathematical notes with theorem environment and mathema
 keywords = ["style", "styling", "notes", "math", "mathematics",  "notation", "theorem", "environment"]
 disciplines = ["computer-science", "engineering", "mathematics", "physics", "education"]
 categories = ["components"]
-compiler = "0.14.1"
+compiler = "0.14.0"
