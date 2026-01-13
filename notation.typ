@@ -41,3 +41,7 @@
 #let cor(X, Y) = $rho [#X, #Y]$
 #let std(symbol) = $op("std") [#symbol]$
 #let ev(symbol) = $op(EE) [#symbol]$
+#let pr(symbol) = $op(PP) (#symbol)$
+
+// Variables
+#let mse = $"MSE"$
