@@ -1,8 +1,12 @@
 #import "style.typ": style
 #import "notation.typ": *
 #import "theorion.typ": (
-  // BASE AND ADDED ENVIRONMENTS
+  // Base and added. If not marked as added, is base.
   
+  // FUNCTIONS
+  theorion-restate,
+
+  // ENVIRONMENTS
   // Numbered
   theorem,
   corollary,
