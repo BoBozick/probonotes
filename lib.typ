@@ -1,10 +1,12 @@
 #import "style.typ": style
 #import "notation.typ": *
 #import "theorion.typ": (
-  // Base and added. If not marked as added, is base.
+  // Base objects from TheOrion and new additions,
+  // which are marked as added.
   
   // FUNCTIONS
   theorion-restate,
+  compact-restate, // Added
 
   // ENVIRONMENTS
   // Numbered
@@ -12,7 +14,6 @@
   corollary,
   lemma,
   definition,
-  compact-restate, // Added
 
   // Boxes
   warning-box,
