@@ -1,4 +1,4 @@
-#import "imports.typ": arccot, iprod, derivative, differential
+#import "imports.typ": arccot, iprod, dv, pdv
 
 
 // ALGEBRA
