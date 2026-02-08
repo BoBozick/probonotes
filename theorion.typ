@@ -44,4 +44,7 @@
   )
 }
 
-#let examples = example.with(title: [Examples])
+#let examples = example.with(title: context {
+    if text.lang == "sv" {[Exempel]} else {[Examples]}
+  }
+)
