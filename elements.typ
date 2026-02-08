@@ -20,3 +20,8 @@
     tight: tight,
   )
 }
+
+// Capitalize first letter in string.
+#let capitalize(text) = {
+  upper(text.first()) + text.slice(1)
+}
