@@ -1,4 +1,5 @@
 #import "imports.typ": *
+#import "elements.typ": capitalize
 
 
 // Modify theorem environments.
@@ -33,14 +34,16 @@
 
 
 // Add functionality.
-#let compact-restate(labels) = {
+#let compact-restate(labels, numbered: true) = {
   theorion-restate(
     filter: it => labels.contains(it.label),
     render: it => (
-      prefix: none, title: "", full-title: auto, body
-      ) => block[
-        *#full-title* \ #body
-      ]
+      prefix: none, title: auto, full-title: auto, body,
+      ) => if numbered { block[
+          *#full-title* \ #body
+        ] } else { block[
+          *#capitalize(it.kind) #{ if it.title != "" {[ (#title) ]} }* \ #body
+        ] }
   )
 }
 
