@@ -8,10 +8,11 @@ and may therefore be impractical for such.
 It is not published to the offical repository but can easily be
 [installed locally](https://github.com/typst/packages?tab=readme-ov-file#local-packages).
 
-For example usages, see my notes that I have uploaded to [my GitHub](https://github.com/BoBozick).
+For example usages, see my notes that I have uploaded to
+[my GitHub](https://github.com/BoBozick).
 I recommend reading the source code for a fuller understanding.
-In short, `lib.typ` is the main file
-that imports all functionality from the other `.typ` files.
+In short, `lib.typ` is the main file that
+imports all functionality from the other `.typ` files.
 
 English is fully supported, while Swedish is partially supported.
 
