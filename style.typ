@@ -107,6 +107,7 @@
   set enum(
     numbering: "(i)",
   )
+  show link: underline
 
   // Math
   set math.mat(delim: "[")
