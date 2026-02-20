@@ -13,6 +13,8 @@ I recommend reading the source code for a fuller understanding.
 In short, `lib.typ` is the main file
 that imports all functionality from the other `.typ` files.
 
+English is fully supported, while Swedish is partially supported.
+
 The name is a [double entendre](https://en.wikipedia.org/wiki/Double_entendre)
 of _pro bono publico_, for the public good,
 and _pro Bo's notes_, for my notes.
