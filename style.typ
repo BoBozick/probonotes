@@ -107,7 +107,14 @@
   set enum(
     numbering: "(i)",
   )
-  show link: underline
+  show link: it => {
+    // Only underline URL links.
+    if type(it.dest) == str {
+      let first-chars = it.dest.slice(0, 3)
+      if first-chars in ("htt", "www") {return underline(it)}
+    }
+    return it
+  }
 
   // Math
   set math.mat(delim: "[")
