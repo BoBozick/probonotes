@@ -139,6 +139,7 @@
   show math.equation.where(block: false): box // Prevent line wrapping.
   show <meme>: it => if not memes {} else {it}
   show image: it => align(center, it)
+  set figure(numbering: none)
   
   show: show-theorion
 
