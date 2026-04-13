@@ -132,7 +132,6 @@
   )
 
   // Graphics
-  show math.equation.where(block: false): block // Prevent line wrapping.
   show <meme>: it => if not memes {} else { it }
   show image: it => align(center, it)
   set figure(numbering: none)
