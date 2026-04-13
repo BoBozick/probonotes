@@ -1,4 +1,4 @@
-#import "imports.typ": iprod, dv, pdv
+#import "imports.typ": iprod, dd, dv, pdv
 
 
 // ALGEBRA
