@@ -10,10 +10,10 @@
   title-space: 0em,
   // Layout
   size: 12pt,
-  margin: 0.5cm, // 0.5cm for computer, 0.1cm for phone.
-  width: 14cm, // 14-16cm for computer, 8cm for phone.
+  margin: 0.5cm,   // 0.5cm for computer, 0.1cm for phone.
+  width: 14cm,     // 14-16cm for computer, 8cm for phone.
   height: auto,
-  end-space: 0em, // 40em to cover computer screen.
+  end-space: 40em, // 40em to cover computer screen.
   heading-break: false,
   // Elements
   language: "en", // sv for Swedish.
