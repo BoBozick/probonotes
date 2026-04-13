@@ -1,4 +1,4 @@
-#import "imports.typ": super-T-as-transpose, show-theorion
+#import "imports.typ": show-theorion, super-T-as-transpose
 
 
 #let style(
@@ -8,21 +8,18 @@
   title-size: 30pt,
   subtitle-size: 16pt,
   title-space: 0em,
-
   // Layout
   size: 12pt,
-  margin: 0.5cm,   // 0.5cm for computer, 0.1cm for phone.
-  width: 14cm,     // 14-16cm for computer, 8cm for phone.
+  margin: 0.5cm, // 0.5cm for computer, 0.1cm for phone.
+  width: 14cm, // 14-16cm for computer, 8cm for phone.
   height: auto,
-  end-space: 0em,  // 40em to cover computer screen.
+  end-space: 0em, // 40em to cover computer screen.
   heading-break: false,
-
   // Elements
-  language: "en",  // sv for Swedish.
+  language: "en", // sv for Swedish.
   contents: false,
   memes: true,
-
-  doc
+  doc,
 ) = {
   // SET PREFERENCES.
 
@@ -34,21 +31,21 @@
       } else {
         "---"
       }
-    }
+    },
   )
 
-  show heading.where(level: 1): it =>{
+  show heading.where(level: 1): it => {
     if heading-break and not it.body == [Contents] {
       pagebreak()
     }
     set text(size: size + 8pt)
     it
   }
-  show heading.where(level: 2): it =>{
+  show heading.where(level: 2): it => {
     set text(size: size + 2pt)
     smallcaps(it)
   }
-  show heading.where(level: 3): it =>{
+  show heading.where(level: 3): it => {
     set text(size: size)
     it
   }
@@ -58,7 +55,7 @@
 
   // Title
   set document(title: course-name)
-  show title: it =>{
+  show title: it => {
     set text(size: title-size)
     set align(center)
     it
@@ -75,8 +72,7 @@
         v(-title-size * 0.4)
         text(size: subtitle-size, subtitle-content)
         v(title-space)
-        }
-      )
+      })
     }
   }
 
@@ -87,10 +83,10 @@
     it.indented(it.prefix(), it.body()),
   )
   show outline.entry.where(
-    level: 1
+    level: 1,
   ): set text(weight: "bold")
   show outline.entry.where(
-    level: 2
+    level: 2,
   ): smallcaps
 
   // Text
@@ -111,7 +107,7 @@
     // Only underline URL links.
     if type(it.dest) == str {
       let first-chars = it.dest.slice(0, 3)
-      if first-chars in ("htt", "www") {return underline(it)}
+      if first-chars in ("htt", "www") { return underline(it) }
     }
     return it
   }
@@ -122,7 +118,7 @@
   show math.mat: math.display
   show math.vec: math.display
   show math.equation.where(block: false): set math.frac(style: "horizontal")
-  
+
   show: super-T-as-transpose
 
   // Layout
@@ -136,15 +132,15 @@
   )
 
   // Graphics
-  show math.equation.where(block: false): box // Prevent line wrapping.
-  show <meme>: it => if not memes {} else {it}
+  show math.equation.where(block: false): block // Prevent line wrapping.
+  show <meme>: it => if not memes {} else { it }
   show image: it => align(center, it)
   set figure(numbering: none)
-  
+
   show: show-theorion
 
   // MAKE DOCUMENT
-  
+
   // Title and headings
   if course-name != "" {
     title()
@@ -152,7 +148,7 @@
     subtitle
     v(title-space)
   }
-  if contents {outline()}
+  if contents { outline() }
 
   // Document
   doc

@@ -8,20 +8,21 @@
   // FUNCTIONS
   theorion-restate,
   compact-restate, // Added
-
+  
   // ENVIRONMENTS
+  
   // Numbered
   theorem,
   corollary,
   lemma,
   definition,
-
-  // Boxes
-  warning-box,
-  tip-box,
-  note-box,
-  remark-box, // Added
-
+  
+  // Blocks
+  warning-block,
+  tip-block,
+  note-block,
+  remark-block, // Added
+  
   // Texts
   proof,
   problem,
