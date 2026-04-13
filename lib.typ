@@ -28,5 +28,5 @@
   problem,
   solution,
   example,
-  examples, // Added
+  examples, // Added, only supported for Swedish and English.
 )
