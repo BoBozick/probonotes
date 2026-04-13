@@ -18,10 +18,10 @@
   definition,
   
   // Blocks
-  warning-block,
-  tip-block,
-  note-block,
-  remark-block,
+  warning-block as warning,
+  tip-block as tip,
+  note-block as note,
+  remark-block as remark,
   
   // Texts
   proof,
