@@ -13,7 +13,7 @@
 #let (lemma-counter, lemma-block, lemma, show-lemma) = make-frame(
   "lemma",
   theorion-i18n-map.at("lemma"),
-  counter: theorem-counter,
+  counter: theorem-counter, // Has 2 inherited levels by default.
   render: render-fn.with(fill: red.darken(20%)),
 )
 
