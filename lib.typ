@@ -21,7 +21,7 @@
   warning-block,
   tip-block,
   note-block,
-  remark-block, // Added
+  remark-block,
   
   // Texts
   proof,

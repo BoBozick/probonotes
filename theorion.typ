@@ -30,8 +30,6 @@
   icon-name: "alert",
 )
 
-#let remark-block = remark // Fix inconsistent naming.
-
 
 // Add functionality.
 #let compact-restate(labels, numbered: true) = {
