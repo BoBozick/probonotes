@@ -1,4 +1,4 @@
-#import "imports.typ": arccot, iprod, dv, pdv
+#import "imports.typ": iprod, dv, pdv
 
 
 // ALGEBRA
@@ -45,3 +45,10 @@
 
 // Variables
 #let mse = $"MSE"$
+
+// ANALYSIS
+
+// Trigonometry
+#let arccot = math.op("arccot")
+#let arccsc = math.op("arccsc")
+#let arcsec = math.op("arcsec")
