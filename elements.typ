@@ -1,3 +1,8 @@
+// Capitalize first letter in string.
+#let capitalize(text) = {
+  upper(text.first()) + text.slice(1)
+}
+
 // Display list that aligns with bullet lists regardless of marker.
 #let custom-list(
     ..children,
@@ -19,9 +24,4 @@
     spacing: spacing,
     tight: tight,
   )
-}
-
-// Capitalize first letter in string.
-#let capitalize(text) = {
-  upper(text.first()) + text.slice(1)
 }
