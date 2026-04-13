@@ -13,8 +13,8 @@
   
   // Numbered
   theorem,
-  corollary,
-  lemma,
+  corollary-block as corollary,
+  lemma-block as lemma,
   definition,
   
   // Blocks
