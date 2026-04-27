@@ -99,6 +99,7 @@
   )
   show raw: set text(
     font: ("Monaspace Neon NF", "DejaVu Sans Mono"),
+    features: ("cv01": 1), // Use normal 0.
   )
   set terms(
     separator: " ",
