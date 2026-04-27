@@ -97,6 +97,9 @@
     lang: language,
     region: "SE",
   )
+  show raw: set text(
+    font: ("Monaspace Neon NF", "DejaVu Sans Mono"),
+  )
   set terms(
     separator: " ",
   )
