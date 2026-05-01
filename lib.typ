@@ -1,13 +1,13 @@
-#import "style.typ": style
-#import "notation.typ": *
-#import "elements.typ": capitalize, custom-list
-#import "theorion.typ": (
+#import "src/style.typ": style
+#import "src/notation.typ": *
+#import "src/elements.typ": capitalize, custom-list
+#import "src/theorion.typ": (
   // Base objects from TheOrion and new additions,
   // which are marked as added.
   
   // FUNCTIONS
   theorion-restate,
-  compact-restate, // Added
+  compact-restate, // Added.
   
   // ENVIRONMENTS
   
@@ -28,5 +28,5 @@
   problem,
   solution,
   example,
-  examples, // Added, only supported for Swedish and English.
+  examples, // Added. Only supported for Swedish and English.
 )

@@ -5,9 +5,12 @@
   // Title and subtitle
   course-name: "", // Title, also set as the exported PDF title.
   course-code: "", // Subtitle.
+  author: "",
+  date: none,
   title-size: 30pt,
   subtitle-size: 16pt,
   title-space: 0em,
+
   // Layout
   size: 12pt,
   margin: 0.5cm,   // 0.5cm for computer, 0.1cm for phone.
@@ -15,7 +18,8 @@
   height: auto,
   end-space: 40em, // 40em to cover computer screen.
   heading-break: false,
-  // Elements
+
+  // Content
   language: "en", // sv for Swedish.
   contents: false,
   memes: true,
@@ -54,23 +58,26 @@
   )
 
   // Title
-  set document(title: course-name)
-  show title: it => {
-    set text(size: title-size)
-    set align(center)
-    it
-  }
-  let subtitle = {
-    set text(size: subtitle-size)
-    set align(center)
-    course-code
-  }
-  let make-title(title-content, subtitle-content) = {
+  let doc-author = if type(author) == array { author } else if author != "" { (author,) } else { () }
+  set document(title: course-name, author: doc-author, date: date)
+
+  let make-title(title-content, subtitle-content, author-content, date-content) = {
     if title-content != "" {
       align(center, {
-        title()
-        v(-title-size * 0.4)
+        text(size: title-size, title-content, weight: "bold")
+        v(-title-size * 0.85)
         text(size: subtitle-size, subtitle-content)
+
+        if author-content != "" or date-content != none {
+          v(0em)
+          text(size: calc.max(subtitle-size * 0.8, size), {
+            author-content
+            if date-content != none {
+              if author-content != "" [ \ ]
+              if date-content == auto { datetime.today().display() } else { date-content.display() }
+            }
+          })
+        }
         v(title-space)
       })
     }
@@ -145,12 +152,8 @@
   // MAKE DOCUMENT
 
   // Title and headings
-  if course-name != "" {
-    title()
-    v(-title-size * 0.4)
-    subtitle
-    v(title-space)
-  }
+  make-title(course-name, course-code, author, date)
+
   if contents { outline() }
 
   // Document

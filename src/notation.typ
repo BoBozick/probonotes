@@ -15,6 +15,7 @@
 #let proj = math.op("proj") // Projection
 #let adj = math.op("adj") // Adjugate
 #let sgn = math.op("sgn") // Signum
+#let diag = math.op("diag") // Diagonal
 #let real = math.op("Re")
 #let imaginary = math.op("Im")
 
@@ -47,6 +48,8 @@
 #let mse = $"MSE"$
 
 // ANALYSIS
+#let argmin = math.op($"arg" med "min"$, limits: true)
+#let argmax = math.op($"arg" med "max"$, limits: true)
 
 // Trigonometry
 #let arccot = math.op("arccot")

@@ -1,27 +1,62 @@
-# Probonotes
+# Probonotes 📝
 
-Probonotes is a Typst styling package for
-mathematical notes with theorem environments and mathematical notation.
+Probonotes is a Typst styling package for mathematical notes with theorem environments and mathematical notation.
 
-Note that this package is not intended for public use
-and may therefore be impractical for such.
-It is not published to the offical repository but can easily be
-[installed locally](https://github.com/typst/packages?tab=readme-ov-file#local-packages).
-
-For example usages, see my notes that I have uploaded to
-[my GitHub](https://github.com/BoBozick).
-I recommend reading the source code for a fuller understanding.
-In short, `lib.typ` is the main file that
-imports all functionality from the other `.typ` files.
-
-English is fully supported, while Swedish is partially supported.
+> **Note:** This package is primarily a personal project. It is not published to the official Typst repository, but you can easily [install it locally](https://github.com/typst/packages?tab=readme-ov-file#local-packages) to use in your own documents.
 
 The name is a [double entendre](https://en.wikipedia.org/wiki/Double_entendre)
-of _pro bono publico_, for the public good,
-and _pro Bo's notes_, for my notes.
+of _pro bono publico_ (for the public good)
+and _pro Bo's notes_ (for my notes).
 
-Dependencies:
-[TheOrion](https://github.com/OrangeX4/typst-theorion/),
-[Physica](https://github.com/Leedehai/typst-physics/)
-\
-License: MIT
+## Features ✨
+
+- **Document Styling**: Unified layout with robust paragraph tuning, table of contents formatting, and a well-structured title page.
+- **Theorem Environments**: Built on top of [TheOrion](https://github.com/OrangeX4/typst-theorion/) as an even easier interface for various numbered and unnumbered styled containers.
+- **Notation Library**: Shorthands for algebra, analysis, probability, and statistics.
+
+## Usage 🚀
+
+1. Clone or download this repository to your local Typst packages directory.
+2. Initialize your document by importing the package and applying the `style` function:
+
+```typst
+#import "@local/probonotes:0.2.1": *
+
+#show: style.with(
+  course-name: "Geometry",
+  course-code: "MM1234",
+  language: "en",
+  contents: true,
+  end-space: 0em,
+)
+
+= Triangles
+
+== Pythagoras
+
+#theorem(title: "Pythagorean")[
+  In a right-angled triangle,
+  $ a^2 + b^2 = c^2. $ 
+]
+
+#lemma[
+  $ c = sqrt(a^2 + b^2) $
+]
+
+== Visualization
+
+#tip[
+  Use a ruler when drawing polygons.
+]
+```
+
+For comprehensive usage examples, check out `example/` and the notes published on [my GitHub](https://github.com/BoBozick).
+
+### Dependencies
+
+- [TheOrion](https://github.com/OrangeX4/typst-theorion/)
+- [Physica](https://github.com/Leedehai/typst-physics/)
+
+### License
+
+Released under the **MIT License**.
