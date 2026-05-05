@@ -1,5 +1,5 @@
 #import "imports.typ": *
-#import "elements.typ": capitalize
+#import "utils.typ": capitalize
 
 // Add custom names.
 
