@@ -1,11 +1,13 @@
-#import "src/style.typ": style
 #import "src/notation.typ": *
+#import "src/style.typ": style
 #import "src/elements.typ": capitalize, custom-list
 #import "src/theorion.typ": (
   // Base objects from TheOrion and new additions,
   // which are marked as added.
   
   // FUNCTIONS
+
+  // Restate
   theorion-restate,
   compact-restate, // Added.
   
@@ -13,15 +15,15 @@
   
   // Numbered
   theorem,
-  corollary-block as corollary,
-  lemma-block as lemma,
   definition,
+  lemma-block as lemma,
+  corollary-block as corollary,
   
   // Blocks
-  warning-block as warning,
-  tip-block as tip,
   note-block as note,
+  tip-block as tip,
   remark-block as remark,
+  warning-block as warning,
   
   // Texts
   proof,
