@@ -16,13 +16,14 @@
   // Numbered
   theorem,
   definition,
-  lemma-block as lemma,
-  corollary-block as corollary,
+  axiom-box as axiom,
+  lemma-box as lemma,
+  corollary-box as corollary,
   
   // Blocks
   note-block as note,
-  tip-block as tip,
   remark-block as remark,
+  tip-block as tip,
   warning-block as warning,
   
   // Texts

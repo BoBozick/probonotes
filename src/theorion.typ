@@ -10,8 +10,7 @@
   ),
 )
 
-#let theorion-i18n-map = theorion-i18n-map + probonotes-i18n-map
-
+#{theorion-i18n-map += probonotes-i18n-map}
 
 // Add simple containers.
 
@@ -30,28 +29,38 @@
 #let examples(title: "Examples", body) = simple("examples", body)
 
 
-// Modify theorem environments.
+// Modify complex containers with environments.
 
-#let (corollary-counter, corollary-block, corollary, show-corollary) = make-frame(
-  "corollary",
-  theorion-i18n-map.at("corollary"),
-  counter: theorem-counter, // Has 2 inherited levels by default.
-  render: render-fn.with(fill: red.darken(20%)),
-)
-
-#let (lemma-counter, lemma-block, lemma, show-lemma) = make-frame(
+#let (lemma-counter, lemma-box, lemma, show-lemma) = make-frame(
   "lemma",
   theorion-i18n-map.at("lemma"),
   counter: theorem-counter, // Has 2 inherited levels by default.
   render: render-fn.with(fill: red.darken(20%)),
 )
 
-#let (definition-counter, definition-block, definition, show-definition) = make-frame(
+#let (corollary-counter, corollary-box, corollary, show-corollary) = make-frame(
+  "corollary",
+  theorion-i18n-map.at("corollary"),
+  counter: theorem-counter, // Has 2 inherited levels by default.
+  render: render-fn.with(fill: red.darken(20%)),
+)
+
+#let (definition-counter, definition-box, definition, show-definition) = make-frame(
   "definition",
   theorion-i18n-map.at("definition"),
-  inherited-levels: 2, // Create new counter with 2 inherited levels.
+  inherited-levels: 2, // Create new counter.
   render: render-fn.with(fill: orange),
 )
+
+#let (axiom-counter, axiom-box, axiom, show-axiom) = make-frame(
+  "axiom",
+  theorion-i18n-map.at("axiom"),
+  inherited-levels: 1, // Create new counter.
+  render: render-fn.with(fill: orange),
+)
+
+
+// Add complex containers.
 
 #let warning-block = note-block.with(
   fill: rgb("#8250DF"),
@@ -81,7 +90,3 @@
     },
   )
 }
-
-#let examples = example.with(title: context {
-  if text.lang == "sv" { [Exempel] } else { [Examples] }
-})
