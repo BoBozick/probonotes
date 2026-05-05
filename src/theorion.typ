@@ -1,8 +1,37 @@
 #import "imports.typ": *
 #import "elements.typ": capitalize
 
+// Add custom names.
+
+#let probonotes-i18n-map = (
+  examples: (
+    en: (us: "Examples", gb: "Examples"),
+    sv: "Exempel",
+  ),
+)
+
+#let theorion-i18n-map = theorion-i18n-map + probonotes-i18n-map
+
+
+// Add simple containers.
+
+#let simple(
+  title,
+  body,
+) = {
+  let translated-title = theorion-i18n(theorion-i18n-map.at(title))
+  [#emph(translated-title).#sym.space#body]
+}
+
+#let proof(   title: "Proof",    body) = simple("proof",    body)
+#let problem( title: "Problem",  body) = simple("problem",  body)
+#let solution(title: "Solution", body) = simple("solution", body)
+#let example( title: "Example",  body) = simple("example",  body)
+#let examples(title: "Examples", body) = simple("examples", body)
+
 
 // Modify theorem environments.
+
 #let (corollary-counter, corollary-block, corollary, show-corollary) = make-frame(
   "corollary",
   theorion-i18n-map.at("corollary"),
@@ -32,6 +61,7 @@
 
 
 // Add functionality.
+
 #let compact-restate(labels, numbered: true) = {
   theorion-restate(
     filter: it => labels.contains(it.label),
