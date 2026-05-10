@@ -25,6 +25,7 @@
   remark-block as remark,
   tip-block as tip,
   warning-block as warning,
+  quote-block as quotation, // Avoid name collision with quote.
   
   // Texts
   proof,
