@@ -49,7 +49,6 @@ and _pro Bo's notes_ (for my notes).
   Use a ruler when drawing polygons.
 ]
 ```
-[Output](examples/short-notes.pdf)
 
 Examples can be found in [examples/](examples/).
 
