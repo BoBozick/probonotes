@@ -20,7 +20,7 @@
   // Boxes
   lemma-box as lemma,
   corollary-box as corollary,
-  proposition-box as proposition
+  proposition-box as proposition,
   axiom-box as axiom,
   postulate-box as postulate,
   
