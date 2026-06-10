@@ -13,20 +13,41 @@
 #{theorion-i18n-map += probonotes-i18n-map}
 
 // Add simple containers.
-
 #let simple(
-  title,
-  body,
+  default-name: [],
+  ..args,
 ) = {
-  let translated-title = theorion-i18n(theorion-i18n-map.at(title))
-  [#emph(translated-title).#sym.space#body]
+  let contents = args.pos() // Into array.
+  
+  if contents.len() > 2 {
+    panic(
+      "Invalid number of arguments for simple container: " +
+      "expected 0, 1, or 2: " +
+      "received " + str(contents.len())
+    )
+  }
+
+  let body = contents.remove(-1, default: [])
+
+  let name = contents.first(default: default-name)
+
+  let name-str = if type(name) == content and name.has("text") {
+    name.text
+  } else {
+    str(name)
+  }
+
+  let translations = theorion-i18n-map.at(name-str, default: none)
+  let title = if translations == none { name } else { theorion-i18n(translations) }
+
+  block[#emph(title).#sym.space#body]
 }
 
-#let proof(   title: "Proof",    body) = simple("proof",    body)
-#let problem( title: "Problem",  body) = simple("problem",  body)
-#let solution(title: "Solution", body) = simple("solution", body)
-#let example( title: "Example",  body) = simple("example",  body)
-#let examples(title: "Examples", body) = simple("examples", body)
+#let proof(   ..args) = simple(default-name: "proof",    ..args)
+#let problem( ..args) = simple(default-name: "problem",  ..args)
+#let solution(..args) = simple(default-name: "solution", ..args)
+#let example( ..args) = simple(default-name: "example",  ..args)
+#let examples(..args) = simple(default-name: "examples", ..args)
 
 
 // Modify complex containers with environments.
