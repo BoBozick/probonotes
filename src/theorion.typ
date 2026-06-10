@@ -45,6 +45,13 @@
   render: render-fn.with(fill: red.darken(20%)),
 )
 
+#let (proposition-counter, proposition-box, proposition, show-proposition) = make-frame(
+  "proposition",
+  theorion-i18n-map.at("proposition"),
+  counter: theorem-counter, // Has 2 inherited levels by default.
+  render: render-fn.with(fill: red.darken(20%)),
+)
+
 #let (definition-counter, definition-box, definition, show-definition) = make-frame(
   "definition",
   theorion-i18n-map.at("definition"),
@@ -56,6 +63,13 @@
   "axiom",
   theorion-i18n-map.at("axiom"),
   inherited-levels: 1, // Create new counter.
+  render: render-fn.with(fill: orange),
+)
+
+#let (postulate-counter, postulate-box, postulate, show-postulate) = make-frame(
+  "postulate",
+  theorion-i18n-map.at("postulate"),
+  inherited-levels: axiom-counter, // Has 1 inherited level by default.
   render: render-fn.with(fill: orange),
 )
 

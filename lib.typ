@@ -13,19 +13,23 @@
   
   // ENVIRONMENTS
   
-  // Numbered
+  // Numbered boxes
   theorem,
   definition,
-  axiom-box as axiom,
+
+  // Boxes
   lemma-box as lemma,
   corollary-box as corollary,
+  proposition-box as proposition
+  axiom-box as axiom,
+  postulate-box as postulate,
   
   // Blocks
   note-block as note,
   remark-block as remark,
   tip-block as tip,
   warning-block as warning,
-  quote-block as quotation, // Avoid name collision with quote.
+  quote-block as quotation, // Avoid name collision with 'quote' from base Typst.
   
   // Texts
   proof,
