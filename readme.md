@@ -49,9 +49,8 @@ and _pro Bo's notes_ (for my notes).
   Use a ruler when drawing polygons.
 ]
 ```
-[Output](examples/short-notes.pdf)
 
-For comprehensive usage examples, check out `example/` and the notes published on [my GitHub](https://github.com/BoBozick).
+Examples can be found in [examples/](examples/).
 
 ### Dependencies
 
