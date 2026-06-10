@@ -23,6 +23,12 @@
 #let ve(symbol) = math.upright(math.bold(symbol)) // Vector
 #let hve(symbol) = math.accent(ve(symbol), math.hat) // Vector with hat
 
+#let chevrons(..args, size: 100% + 0pt) = {
+  let body = $#args.pos().join($,$)$
+  $lr(chevron.l #body chevron.r, size: size)$
+}
+#let iprod = chevrons
+
 // STATISTICS
 
 #let choose(n, k) = math.vec(n, k, delim: "(")
