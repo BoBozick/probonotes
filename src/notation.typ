@@ -1,5 +1,12 @@
-#import "imports.typ": iprod, dd, dv, pdv
+#import "imports.typ": dd, dv, pdv
+#import "utils.typ": delimiters
 
+// DELIMITERS
+
+#let parens = delimiters(delim: "(")
+#let brackets = delimiters(delim: "[")
+#let braces = delimiters(delim: "{")
+#let chevrons = delimiters(delim: "<")
 
 // ALGEBRA
 
@@ -23,10 +30,6 @@
 #let ve(symbol) = math.upright(math.bold(symbol)) // Vector
 #let hve(symbol) = math.accent(ve(symbol), math.hat) // Vector with hat
 
-#let chevrons(..args, size: 100% + 0pt) = {
-  let body = $#args.pos().join($,$)$
-  $lr(chevron.l #body chevron.r, size: size)$
-}
 #let iprod = chevrons
 
 // STATISTICS

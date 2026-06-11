@@ -1,3 +1,36 @@
+// Add delimiters for notation.
+#let delim-pairs = (
+  "(": (math.paren.l, math.paren.r),
+  "[": (math.bracket.l, math.bracket.r),
+  "{": (math.brace.l, math.brace.r),
+  "<": (math.chevron.l, math.chevron.r),
+  "|": (math.bar.v, math.bar.v),
+  "||": (math.bar.v.double, math.bar.v.double),
+)
+
+#let get-delim-pair(..args, delim: "(") = {
+  return delim-pairs.at(delim, default: (delim, delim))
+}
+
+#let delimiters(
+  ..args,
+  cond: none,
+  delim: "(",
+  size: 100% + 0pt,
+  scale-builder: true,
+) = {
+  let (left, right) = get-delim-pair(delim)
+
+  let body = $#args.pos().join($,$)$
+
+  if cond != none {
+    let set-builder = if scale-builder { $mid(|)$ } else { $|$ }
+    body = $#body #set-builder #cond$
+  }
+  
+  $lr(#left #body #right, size: size)$
+}
+
 // Capitalize first letter in string.
 #let capitalize(text) = {
   upper(text.first()) + text.slice(1)
