@@ -43,11 +43,11 @@
   block[#emph(title).#sym.space#body]
 }
 
-#let proof(   ..args) = simple(default-name: "proof",    ..args)
-#let problem( ..args) = simple(default-name: "problem",  ..args)
-#let solution(..args) = simple(default-name: "solution", ..args)
-#let example( ..args) = simple(default-name: "example",  ..args)
-#let examples(..args) = simple(default-name: "examples", ..args)
+#let proof = simple.with(default-name: "proof")
+#let problem = simple.with(default-name: "problem")
+#let solution = simple.with(default-name: "solution")
+#let example = simple.with(default-name: "example")
+#let examples = simple.with(default-name: "examples")
 
 
 // Modify complex containers with environments.

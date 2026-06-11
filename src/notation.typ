@@ -3,10 +3,10 @@
 
 // DELIMITERS
 
-#let parens = delimiters(delim: "(")
-#let brackets = delimiters(delim: "[")
-#let braces = delimiters(delim: "{")
-#let chevrons = delimiters(delim: "<")
+#let parens = delimiters.with(delim: "(")
+#let brackets = delimiters.with(delim: "[")
+#let braces = delimiters.with(delim: "{")
+#let chevrons = delimiters.with(delim: "<")
 
 // ALGEBRA
 
