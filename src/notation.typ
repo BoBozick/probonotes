@@ -8,6 +8,8 @@
 #let braces = delimiters.with(delim: "{")
 #let chevrons = delimiters.with(delim: "<")
 
+#let car = math.abs // Cardinal number
+
 // ALGEBRA
 
 #let ort = math.tack.t // Orthogonal
