@@ -17,19 +17,15 @@
   cond: none,
   operator: none,
   delim: "(",
+  set-builder: $|$,
   size: 100% + 0pt,
-  scale-builder: true,
 ) = {
+  let prefix = math.op(operator)
   let (left, right) = get-delim-pair(delim: delim)
-
   let body = $#args.pos().join($,$)$
-
-  if cond != none {
-    let set-builder = if scale-builder { $mid(|)$ } else { $|$ }
-    body = $#body #set-builder #cond$
-  }
+  if cond != none { body = $#body mid(#set-builder) #cond$ }
   
-  $lr(op(operator) #left #body #right, size: size)$
+  $#prefix lr(#left #body #right, size: size)$
 }
 
 // Capitalize first letter in string.
