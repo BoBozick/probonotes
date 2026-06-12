@@ -8,18 +8,19 @@
   "||": (math.bar.v.double, math.bar.v.double),
 )
 
-#let get-delim-pair(..args, delim: "(") = {
+#let get-delim-pair(delim: "(") = {
   return delim-pairs.at(delim, default: (delim, delim))
 }
 
 #let delimiters(
   ..args,
   cond: none,
+  operator: none,
   delim: "(",
   size: 100% + 0pt,
   scale-builder: true,
 ) = {
-  let (left, right) = get-delim-pair(delim)
+  let (left, right) = get-delim-pair(delim: delim)
 
   let body = $#args.pos().join($,$)$
 
@@ -28,7 +29,7 @@
     body = $#body #set-builder #cond$
   }
   
-  $lr(#left #body #right, size: size)$
+  $lr(op(operator) #left #body #right, size: size)$
 }
 
 // Capitalize first letter in string.

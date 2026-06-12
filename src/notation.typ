@@ -30,11 +30,11 @@
 #let ve(symbol) = math.upright(math.bold(symbol)) // Vector
 #let hve(symbol) = math.accent(ve(symbol), math.hat) // Vector with hat
 
-#let iprod = chevrons
+#let iprod = chevrons // May be deprecated in the future.
 
 // STATISTICS
 
-#let choose(n, k) = math.vec(n, k, delim: "(")
+#let choose(n, k) = math.mat((n,), (k,), delim: "(")
 
 // Distributions
 #let geom = math.op("Geom")
@@ -46,12 +46,12 @@
 #let no = math.op(math.cal("N"))
 
 // Operators
-#let var(symbol) = $op("var") [#symbol]$
-#let cov(X, Y) = $op("cov") [#X, #Y]$
-#let cor(X, Y) = $rho [#X, #Y]$
-#let std(symbol) = $op("std") [#symbol]$
-#let ev(symbol) = $op(EE) [#symbol]$
-#let pr(symbol) = $op(PP) (#symbol)$
+#let var = brackets.with(operator: "var")
+#let cov = brackets.with(operator: "cov")
+#let cor = brackets.with(operator: $rho$)
+#let std = brackets.with(operator: "std")
+#let ev = brackets.with(operator: $EE$)
+#let pr = brackets.with(operator: $PP$)
 
 // Variables
 #let mse = $"MSE"$
