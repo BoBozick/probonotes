@@ -26,6 +26,8 @@
 #let real = math.op("Re")
 #let imaginary = math.op("Im")
 
+#let cycle(..args) = math.mat(..args, delim: "(")
+
 // Vectors
 #let ve(symbol) = math.upright(math.bold(symbol)) // Vector
 #let hve(symbol) = math.accent(ve(symbol), math.hat) // Vector with hat
