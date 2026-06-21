@@ -10,6 +10,8 @@
 
 // ALGEBRA
 
+#let cycle(..args) = math.mat(..args, delim: "(")
+
 #let ort = math.tack.t // Orthogonal
 
 #let col = math.op("col") // Column space
@@ -26,13 +28,9 @@
 #let real = math.op("Re")
 #let imaginary = math.op("Im")
 
-#let cycle(..args) = math.mat(..args, delim: "(")
-
 // Vectors
 #let ve(symbol) = math.upright(math.bold(symbol)) // Vector
 #let hve(symbol) = math.accent(ve(symbol), math.hat) // Vector with hat
-
-#let iprod = chevrons // May be deprecated in the future.
 
 // STATISTICS
 
