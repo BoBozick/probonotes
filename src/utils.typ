@@ -20,12 +20,15 @@
   set-builder: $|$,
   size: 100% + 0pt,
 ) = {
-  let prefix = math.op(operator)
-  let (left, right) = get-delim-pair(delim: delim)
   let body = $#args.pos().join($,$)$
   if cond != none { body = $#body mid(#set-builder) #cond$ }
+
+  let (left, right) = get-delim-pair(delim: delim)
+  let delimited = $lr(#left #body #right, size: size)$
   
-  $#prefix lr(#left #body #right, size: size)$
+  if operator != none { delimited = $op(operator) #delimited$ }
+  
+  return delimited
 }
 
 // Capitalize first letter in string.
