@@ -1,6 +1,6 @@
 #import "src/notation.typ": *
 #import "src/style.typ": style
-#import "src/utils.typ": capitalize, custom-list, uniform-box
+#import "src/utils.typ": capitalize, custom-list, match-width
 #import "src/theorion.typ": (
   // Base objects from TheOrion and new additions,
   // which are marked as added.
