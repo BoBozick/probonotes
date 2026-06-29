@@ -63,5 +63,5 @@
 #let match-width(..args, among: (), alignment: start) = context {
   let items = args.pos()
   let max-w = calc.max(..(..items, ..among).map(it => measure(it).width))
-  box(width: max-w, align(alignment, body))
+  items.map(it => box(width: max-w, align(alignment, it)))
 }
