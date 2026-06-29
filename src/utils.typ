@@ -58,3 +58,37 @@
     tight: tight,
   )
 }
+
+// Computes uniformly padded boxes and passes them as an array to a callback function.
+//
+// - callback (function): An anonymous function that accepts the array of processed boxes,
+//   e.g., `((even, odd)) => [ ... ]`.
+// - alignment (alignment): Mechanical alignment of the text inside each box wrapper.
+// - fill (none, color, paint): Optional background color fill for the generated boxes.
+// - inset (length, dictionary): Internal padding/margin inside the boxes.
+// - outboard (length): A minimum width threshold; forces boxes to stretch to this width
+//   if content is smaller.
+// - items (arguments): The varying content elements that need their widths equalized.
+#let uniform-box(
+  callback,
+  alignment: start, 
+  fill: none, 
+  inset: 0pt, 
+  outboard: 0pt, 
+  ..items
+) = context {
+  let elements = items.pos()
+  if elements.len() == 0 { return callback(()) }
+  
+  let max-width = calc.max(..elements.map(it => measure(it).width))
+  let target-width = calc.max(max-width, outboard)
+  
+  let processed = elements.map(it => box(
+    width: target-width, 
+    fill: fill, 
+    inset: inset, 
+    align(alignment, it)
+  ))
+  
+  callback(processed)
+}
