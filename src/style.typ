@@ -129,6 +129,7 @@
   show math.mat: math.display
   show math.vec: math.display
   show math.equation.where(block: false): set math.frac(style: "horizontal")
+  show math.equation: box
 
   show: super-T-as-transpose
 
