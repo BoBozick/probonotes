@@ -59,9 +59,22 @@
   )
 }
 
-// Pads `args` to the maximum width of themselves and the `among` elements.
-#let match-width(..args, among: (), alignment: start) = context {
-  let items = args.pos()
-  let max-w = calc.max(..(..items, ..among).map(it => measure(it).width))
-  items.map(it => box(width: max-w, align(alignment, it)))
+// Pads `body` to the maximum width found among itself and the `among` array elements.
+#let max-width-box(body, among: (), alignment: start) = context {
+  let among-flattened = if type(among) == array { among } else { (among,) }
+  let candidates = (body,) + among-flattened
+
+  let max-w = calc.max(..candidates.map(it => measure(it).width))
+
+  box(width: max-w, align(alignment, body))
+}
+
+// Pads each item in `items` to the maximum width found among them,
+// aligning each according to `alignment`.
+#let match-widths(..items, alignment: start) = {
+  let elements = items.pos()
+  assert(type(elements) == array)
+
+  let make-element = max-width-box.with(among: elements, alignment: alignment)
+  elements.map(it => make-element(it))
 }
