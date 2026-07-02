@@ -28,6 +28,17 @@
 #let real = math.op("Re")
 #let imaginary = math.op("Im")
 
+// Normal Subgroups
+
+#let normal = (
+  l:   math.class("relation", "⊲"),
+  r:   math.class("relation", "⊳"),
+  eq: (
+    l: math.class("relation", "⊴"),
+    r: math.class("relation", "⊵"),
+  ),
+)
+
 // Vectors
 #let ve(symbol) = math.upright(math.bold(symbol)) // Vector
 #let hve(symbol) = math.accent(ve(symbol), math.hat) // Vector with hat
