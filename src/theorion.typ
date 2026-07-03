@@ -18,7 +18,6 @@
   ..args,
 ) = {
   let contents = args.pos() // Into array.
-  
   if contents.len() > 2 {
     panic(
       "Invalid number of arguments for simple container: " +
@@ -30,17 +29,19 @@
   let body = contents.remove(-1, default: [])
 
   let name = contents.first(default: default-name)
-
   let name-str = if type(name) == content and name.has("text") {
     name.text
   } else {
     str(name)
   }
-
   let translations = theorion-i18n-map.at(name-str, default: none)
-  let title = if translations == none { name } else { theorion-i18n(translations) }
+  let title = if translations == none {
+    name
+  } else {
+    theorion-i18n(translations)
+  }
 
-  block[#emph(title).#sym.space#body]
+  [#emph(title).#sym.space#body]
 }
 
 #let proof = simple.with(default-name: "proof")
