@@ -29,14 +29,14 @@
 #let imaginary = math.op("Im")
 
 // Normal Subgroups
-
-#let normal = (
-  l:   math.class("relation", "⊲"),
-  r:   math.class("relation", "⊳"),
-  eq: (
-    l: math.class("relation", "⊴"),
-    r: math.class("relation", "⊵"),
-  ),
+#let normal = symbol(
+  "⊲",
+  ("l", "⊲"),
+  ("r", "⊳"),
+  
+  ("eq", "⊴"),
+  ("l.eq", "⊴"),
+  ("r.eq", "⊵"),
 )
 
 // Vectors
