@@ -27,6 +27,10 @@
   }
 
   let body = contents.remove(-1, default: [])
+  if body.at("children", default: ()).first(default: none) != [ ] {
+    // Add missing space for single-line content containers.
+    body = sym.space + body
+  }
 
   let name = contents.first(default: default-name)
   let name-str = if type(name) == content and name.has("text") {
