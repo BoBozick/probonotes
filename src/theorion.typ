@@ -33,11 +33,7 @@
   }
 
   let name = contents.first(default: default-name)
-  let name-str = if type(name) == content and name.has("text") {
-    name.text
-  } else {
-    str(name)
-  }
+  let name-str = name.at("text", default: str(name))
   let translations = theorion-i18n-map.at(name-str, default: none)
   let title = if translations == none {
     name
