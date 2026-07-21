@@ -101,13 +101,13 @@
   // Text
   set text(
     size: size,
-    font: "New Computer Modern",
+    font: ("New Computer Modern", "STIX Two Text", "Times New Roman"),
 
     lang: language,
     region: "SE",
   )
   show raw: set text(
-    font: ("Monaspace Neon NF", "DejaVu Sans Mono"),
+    font: ("Monaspace Neon", "Monaspace Neon NF", "DejaVu Sans Mono"),
     features: ("cv01": 1), // Use normal 0.
   )
   set terms(
