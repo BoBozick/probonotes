@@ -1,6 +1,8 @@
 #import "imports.typ": show-theorion, super-T-as-transpose
 
 
+#let url(link) = underline(link)
+
 #let style(
   // Title and subtitle
   course-name: "", // Title, also set as the exported PDF title.
@@ -114,14 +116,7 @@
   set enum(
     numbering: "(i)",
   )
-  show link: it => {
-    // Only underline URL links.
-    if type(it.dest) == str {
-      let first-chars = it.dest.slice(0, 3)
-      if first-chars in ("htt", "www") { return underline(it) }
-    }
-    return it
-  }
+  show link: it => if type(it.dest) == str { url(it) } else { it }
 
   // Math
   set math.mat(delim: "[")
