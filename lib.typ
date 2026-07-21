@@ -1,5 +1,5 @@
 #import "src/notation.typ": *
-#import "src/style.typ": style
+#import "src/style.typ": url, style
 #import "src/utils.typ": capitalize, custom-list, match-widths
 #import "src/theorion.typ": (
   // Base objects from TheOrion and new additions,
