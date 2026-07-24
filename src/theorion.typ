@@ -1,6 +1,28 @@
 #import "imports.typ": *
 #import "utils.typ": capitalize
 
+// Add functionality.
+
+#let compact-restate(labels, numbered: true) = {
+  theorion-restate(
+    filter: it => labels.contains(it.label),
+    render: it => (
+      prefix: none,
+      title: auto,
+      full-title: auto,
+      body,
+    ) => if numbered {
+      block[
+        *#full-title* \ #body
+      ]
+    } else {
+      block[
+        *#capitalize(it.kind) #{ if it.title != "" { [ (#title) ] } }* \ #body
+      ]
+    },
+  )
+}
+
 // Add custom names.
 
 #let probonotes-i18n-map = (
@@ -13,6 +35,7 @@
 #{theorion-i18n-map += probonotes-i18n-map}
 
 // Add simple containers.
+
 #let simple(
   default-name: [],
   ..args,
@@ -54,8 +77,16 @@
 #let example = simple.with(default-name: "example")
 #let examples = simple.with(default-name: "examples")
 
+// Add complex containers.
+
+#let warning-block = note-block.with(
+  fill: rgb("#8250DF"),
+  title: theorion-i18n-map.at("warning"),
+  icon-name: "alert",
+)
 
 // Modify complex containers with environments.
+
 #let (theorem-counter, theorem-box, theorem, show-theorem) = make-frame(
   "theorem",
   theorion-i18n-map.at("theorem"),
@@ -104,35 +135,3 @@
   inherited-levels: axiom-counter,
   render: render-fn.with(fill: orange),
 )
-
-
-// Add complex containers.
-
-#let warning-block = note-block.with(
-  fill: rgb("#8250DF"),
-  title: theorion-i18n-map.at("warning"),
-  icon-name: "alert",
-)
-
-
-// Add functionality.
-
-#let compact-restate(labels, numbered: true) = {
-  theorion-restate(
-    filter: it => labels.contains(it.label),
-    render: it => (
-      prefix: none,
-      title: auto,
-      full-title: auto,
-      body,
-    ) => if numbered {
-      block[
-        *#full-title* \ #body
-      ]
-    } else {
-      block[
-        *#capitalize(it.kind) #{ if it.title != "" { [ (#title) ] } }* \ #body
-      ]
-    },
-  )
-}
