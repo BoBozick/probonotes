@@ -20,6 +20,7 @@
   height: auto,
   end-space: 40em, // 40em to cover computer screen.
   heading-break: false,
+  max-heading-lvl: 3, // Maximum outlined and numbered heading level.
 
   // Content
   language: "en", // sv for Swedish.
@@ -31,55 +32,72 @@
 
   // Headings
   set heading(
-    numbering: (..levels) => {
-      if levels.pos().len() <= 3 {
-        levels.pos().map(str).join(".") + "."
-      } else {
-        "---"
+    numbering: (..numbers) => {
+      let nums = numbers.pos()
+
+      if nums.len() > max-heading-lvl or nums.first() == 0 {
+        return "---"
       }
+
+      numbering("1.1.", ..nums)
     },
   )
 
-  show heading.where(level: 1): it => {
-    if heading-break and not it.body == [Contents] {
+  show heading: it => {
+    let heading-sizes = size * (20, 14, 12) / 12
+    let target-size = heading-sizes.at(it.level - 1, default: size)
+    set text(size: target-size)
+    
+    set heading(outlined: false) if it.level > max-heading-lvl
+
+    if it.level == 2 {
+      return smallcaps(it)
+    }
+
+    if heading-break and it.level == 1 and not it.body == [Contents] {
       pagebreak()
     }
-    set text(size: size + 8pt)
+
     it
   }
-  show heading.where(level: 2): it => {
-    set text(size: size + 2pt)
-    smallcaps(it)
-  }
-  show heading.where(level: 3): it => {
-    set text(size: size)
-    it
-  }
-  show heading.where(level: 4): set heading(
-    outlined: false,
-  )
 
   // Title
-  let doc-author = if type(author) == array { author } else if author != "" { (author,) } else { () }
-  set document(title: course-name, author: doc-author, date: date)
+  let author-array = if type(author) == array {
+    author
+  } else if author != "" {
+    (author,)
+  } else {
+    ()
+  }
+  
+  set document(title: course-name, date: date, author: author-array)
 
   let make-title(title-content, subtitle-content, author-content, date-content) = {
     if title-content != "" {
       align(center, {
-        text(size: title-size, title-content, weight: "bold")
+        text(title-content, size: title-size, weight: "bold")
         v(-title-size * 0.85)
-        text(size: subtitle-size, subtitle-content)
+        text(subtitle-content, size: subtitle-size,)
 
         if author-content != "" or date-content != none {
-          v(0em)
-          text(size: calc.max(subtitle-size * 0.8, size), {
-            author-content
-            if date-content != none {
-              if author-content != "" [ \ ]
-              if date-content == auto { datetime.today().display() } else { date-content.display() }
+          v(size)
+
+          author-date-size = calc.max(subtitle-size * 0.8, size)
+          set text(size: author-date-size)
+
+          author-content
+
+          if date-content != none {
+            if author-content != "" [ \ ]
+
+            if date-content == auto {
+              datetime.today().display()
+            } else {
+              date-content.display()
             }
-          })
+          }
         }
+
         v(title-space)
       })
     }
@@ -91,12 +109,9 @@
     // Drop the fill and the page.
     it.indented(it.prefix(), it.body()),
   )
-  show outline.entry.where(
-    level: 1,
-  ): set text(weight: "bold")
-  show outline.entry.where(
-    level: 2,
-  ): smallcaps
+
+  show outline.entry.where(level: 1): set text(weight: "bold")
+  show outline.entry.where(level: 2): smallcaps
 
   // Text
   set text(
@@ -110,28 +125,28 @@
     font: ("Monaspace Neon", "Monaspace Neon NF", "DejaVu Sans Mono"),
     features: ("cv01": 1), // Use normal 0.
   )
-  set terms(
-    separator: " ",
-  )
-  set enum(
-    numbering: "(i)",
-  )
+
+  set terms(separator: " ")
+  set enum(numbering: "(i)")
+
   show link: it => if type(it.dest) == str { url(it) } else { it }
 
   // Math
   set math.mat(delim: "[")
   set math.vec(delim: "[")
+
   show math.mat: math.display
   show math.vec: math.display
+
   show math.equation.where(block: false): set math.frac(style: "horizontal")
   show math.equation: box
 
   show: super-T-as-transpose
+  show: show-theorion
 
   // Layout
-  set par(
-    leading: 0.80em,
-  )
+  set par(leading: 0.80em)
+
   set page(
     margin: margin,
     height: height,
@@ -139,11 +154,10 @@
   )
 
   // Graphics
-  show <meme>: it => if not memes {} else { it }
+  show <meme>: it => if memes { it } else { none }
   show image: it => align(center, it)
+  show figure.where(kind: image): set align(center)
   set figure(numbering: none)
-
-  show: show-theorion
 
   // MAKE DOCUMENT
 
@@ -154,5 +168,6 @@
 
   // Document
   doc
+  
   v(end-space)
 }
