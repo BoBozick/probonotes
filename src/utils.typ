@@ -1,36 +1,3 @@
-// Add delimiters for notation.
-#let delim-pairs = (
-  "(": (math.paren.l, math.paren.r),
-  "[": (math.bracket.l, math.bracket.r),
-  "{": (math.brace.l, math.brace.r),
-  "<": (math.chevron.l, math.chevron.r),
-  "|": (math.bar.v, math.bar.v),
-  "||": (math.bar.v.double, math.bar.v.double),
-)
-
-#let get-delim-pair(delim: "(") = {
-  return delim-pairs.at(delim, default: (delim, delim))
-}
-
-#let delimiters(
-  ..args,
-  cond: none,
-  operator: none,
-  delim: "(",
-  set-builder: $|$,
-  size: 100% + 0pt,
-) = {
-  let body = $#args.pos().join($,$)$
-  if cond != none { body = $#body mid(#set-builder) #cond$ }
-
-  let (left, right) = get-delim-pair(delim: delim)
-  let delimited = $lr(#left #body #right, size: size)$
-  
-  if operator != none { delimited = $op(operator) #delimited$ }
-  
-  return delimited
-}
-
 // Capitalize first letter in string.
 #let capitalize(text) = {
   upper(text.first()) + text.slice(1)
@@ -77,4 +44,37 @@
 
   let make-element = max-width-box.with(among: elements, alignment: alignment)
   elements.map(it => make-element(it))
+}
+
+// Add delimiters for notation.
+#let delim-pairs = (
+  "(": (math.paren.l, math.paren.r),
+  "[": (math.bracket.l, math.bracket.r),
+  "{": (math.brace.l, math.brace.r),
+  "<": (math.chevron.l, math.chevron.r),
+  "|": (math.bar.v, math.bar.v),
+  "||": (math.bar.v.double, math.bar.v.double),
+)
+
+#let get-delim-pair(delim: "(") = {
+  return delim-pairs.at(delim, default: (delim, delim))
+}
+
+#let delimiters(
+  ..args,
+  cond: none,
+  operator: none,
+  delim: "(",
+  set-builder: $|$,
+  size: 100% + 0pt,
+) = {
+  let body = $#args.pos().join($,$)$
+  if cond != none { body = $#body mid(#set-builder) #cond$ }
+
+  let (left, right) = get-delim-pair(delim: delim)
+  let delimited = $lr(#left #body #right, size: size)$
+  
+  if operator != none { delimited = $op(operator) #delimited$ }
+  
+  return delimited
 }
