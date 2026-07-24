@@ -47,6 +47,7 @@
 }
 
 // Add delimiters for notation.
+
 #let delim-pairs = (
   "(": (math.paren.l, math.paren.r),
   "[": (math.bracket.l, math.bracket.r),
