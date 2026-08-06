@@ -45,7 +45,9 @@
 
 // STATISTICS
 
-// Deprecated: choose - use binom from base Typst instead.
+// Deprecated
+// choose - use binom from base instead.
+// mse - use "MSE" from base instead.
 
 // Distributions
 #let geom = math.op("Geom")
@@ -63,9 +65,6 @@
 #let std = brackets.with(operator: "std")
 #let ev = brackets.with(operator: $EE$)
 #let pr = brackets.with(operator: $PP$)
-
-// Variables
-#let mse = $"MSE"$
 
 // ANALYSIS
 #let argmin = math.op($"arg" med "min"$, limits: true)
