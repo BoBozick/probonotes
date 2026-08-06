@@ -45,7 +45,7 @@
 
 // STATISTICS
 
-#let choose(n, k) = math.mat((n,), (k,), delim: "(")
+// Deprecated: choose - use binom from base Typst instead.
 
 // Distributions
 #let geom = math.op("Geom")
