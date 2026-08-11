@@ -69,6 +69,8 @@
   } else {
     ()
   }
+
+  if date == auto { date = datetime.today() }
   
   set document(title: course-name, date: date, author: author-array)
 
@@ -90,11 +92,7 @@
           if date-content != none {
             if author-content != "" [ \ ]
 
-            if date-content == auto {
-              datetime.today().display()
-            } else {
-              date-content.display()
-            }
+            date-content.display()
           }
         }
 
