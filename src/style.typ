@@ -39,7 +39,7 @@
         return "---"
       }
 
-      numbering("1.1.", ..nums)
+      numbering("1.", ..nums)
     },
   )
 
