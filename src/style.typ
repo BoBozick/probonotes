@@ -7,7 +7,7 @@
   // Title and subtitle
   course-name: "", // Title, also set as the exported PDF title.
   course-code: "", // Subtitle.
-  author: "",
+  author: none,
   date: none,
   title-size: 30pt,
   subtitle-size: 16pt,
@@ -62,17 +62,9 @@
   }
 
   // Title
-  let author-array = if type(author) == array {
-    author
-  } else if author != "" {
-    (author,)
-  } else {
-    ()
-  }
-
   if date == auto { date = datetime.today() }
   
-  set document(title: course-name, date: date, author: author-array)
+  set document(title: course-name, date: date, author: author)
 
   let make-title(title-content, subtitle-content, author-content, date-content) = {
     if title-content != "" {
