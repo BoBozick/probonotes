@@ -1,6 +1,5 @@
 #import "imports.typ": show-theorion, super-T-as-transpose
 
-
 #let url(link) = underline(link)
 
 #let style(
