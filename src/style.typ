@@ -27,11 +27,21 @@
   memes: true,
   doc,
 ) = {
-  // SET PREFERENCES.
+  // Metadata
+  if author == () {
+    panic("parameter error: set author to `none` instead of `()`")
+  }
+
+  if date == auto { date = datetime.today() }
+  
+  set document(
+    title: course-name,
+    author: if author == none { () } else { author },
+    date: date,
+  )
 
   // Headings
-  set heading(
-    numbering: (..numbers) => {
+  set heading(numbering: (..numbers) => {
       let nums = numbers.pos()
 
       if nums.len() > max-heading-lvl or nums.first() == 0 {
@@ -39,10 +49,10 @@
       }
 
       numbering("1.", ..nums)
-    },
+    }
   )
-
-  let heading-sizes = size * (20, 14, 12) / 12
+  
+  let heading-sizes = (size + 8pt, size + 2pt, size + 0pt)
   show heading: it => {
     let target-size = heading-sizes.at(it.level - 1, default: size)
     set text(size: target-size)
@@ -60,43 +70,10 @@
     it
   }
 
-  // Title
-  if date == auto { date = datetime.today() }
-  
-  set document(title: course-name, date: date, author: author)
-
-  let make-title(title-content, subtitle-content, author-content, date-content) = {
-    if title-content != "" {
-      align(center, {
-        text(title-content, size: title-size, weight: "bold")
-        v(-title-size * 0.85)
-        text(subtitle-content, size: subtitle-size,)
-
-        if author-content != "" or date-content != none {
-          v(size)
-
-          author-date-size = calc.max(subtitle-size * 0.8, size)
-          set text(size: author-date-size)
-
-          author-content
-
-          if date-content != none {
-            if author-content != "" [ \ ]
-
-            date-content.display()
-          }
-        }
-
-        v(title-space)
-      })
-    }
-  }
-
   // Outline
   show outline.entry: it => link(
     it.element.location(),
-    // Drop the fill and the page.
-    it.indented(it.prefix(), it.body()),
+    it.indented(it.prefix(), it.body()), // Drop the fill and the page.
   )
 
   show outline.entry.where(level: 1): set text(weight: "bold")
@@ -147,8 +124,39 @@
 
   // MAKE DOCUMENT
 
-  // Title and headings
-  make-title(course-name, course-code, author, date)
+  // Title
+  align(center, {
+    set par(leading: 0.6 * size)
+
+    if course-name != "" {
+      text(course-name, size: title-size, weight: "bold")
+      linebreak()
+    }
+
+    if course-code != "" {
+      text(course-code, size: subtitle-size)
+      linebreak()
+    }
+
+    if author != none or date != none {
+      let author-date-size = calc.max(subtitle-size * 0.8, size)
+      set text(size: author-date-size)
+
+      if type(author) == array {
+        author.join(" ")
+      } else {
+        author
+      }
+
+      if date != none {
+        if author != none { linebreak() }
+
+        date.display()
+      }
+    }
+
+    v(title-space)
+  })
 
   if contents { outline() }
 
