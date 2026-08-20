@@ -43,8 +43,8 @@
     },
   )
 
+  let heading-sizes = size * (20, 14, 12) / 12
   show heading: it => {
-    let heading-sizes = size * (20, 14, 12) / 12
     let target-size = heading-sizes.at(it.level - 1, default: size)
     set text(size: target-size)
     
@@ -54,7 +54,7 @@
       return smallcaps(it)
     }
 
-    if heading-break and it.level == 1 and not it.body == [Contents] {
+    if heading-break and it.level == 1 and it.body != [Contents] {
       pagebreak()
     }
 
