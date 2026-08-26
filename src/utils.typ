@@ -3,29 +3,6 @@
   upper(text.first()) + text.slice(1)
 }
 
-// Display list that aligns with bullet lists regardless of marker.
-#let custom-list(
-    ..children,
-    body-indent: 0.5em, // Base body indent.
-    indent: 0pt,
-    marker: ([•], [‣], [–]),
-    spacing: auto,
-    tight: true,
-) = context {
-  let bullet-width = measure(sym.bullet).width // Typically 9.34pt.
-  let marker-width = measure(marker).width
-  let new-body-indent = bullet-width - marker-width + body-indent
-
-  list(
-    ..children,
-    body-indent: new-body-indent,
-    indent: indent,
-    marker: marker,
-    spacing: spacing,
-    tight: tight,
-  )
-}
-
 // Pads `body` to the maximum width found among itself and the `among` array elements.
 #let max-width-box(body, among: (), alignment: start) = context {
   let among-flattened = if type(among) == array { among } else { (among,) }
