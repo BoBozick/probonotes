@@ -19,7 +19,6 @@
   height: auto,
   end-space: 40em, // 40em to cover computer screen.
   heading-break: false,
-  max-heading-lvl: 3, // Maximum outlined and numbered heading level.
 
   // Content
   language: "en", // sv for Swedish.
@@ -44,7 +43,7 @@
   set heading(numbering: (..numbers) => {
       let nums = numbers.pos()
 
-      if nums.len() > max-heading-lvl or nums.first() == 0 {
+      if nums.len() > 3 or nums.first() == 0 {
         return "---"
       }
 
@@ -57,8 +56,6 @@
     let target-size = heading-sizes.at(it.level - 1, default: size)
     set text(size: target-size)
     
-    set heading(outlined: false) if it.level > max-heading-lvl
-
     if it.level == 2 {
       return smallcaps(it)
     }
@@ -158,9 +155,17 @@
     v(title-space)
   })
 
+  // Outline
+
+  set heading(outlined: false)
+
   if contents { outline() }
 
+  show heading.where(level: 1): set heading(outlined: true)
+  show heading.where(level: 2): set heading(outlined: true)
+
   // Document
+
   doc
   
   v(end-space)
