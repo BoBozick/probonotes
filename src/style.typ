@@ -163,6 +163,7 @@
 
   show heading.where(level: 1): set heading(outlined: true)
   show heading.where(level: 2): set heading(outlined: true)
+  show heading.where(level: 3): set heading(outlined: true)
 
   // Document
 
