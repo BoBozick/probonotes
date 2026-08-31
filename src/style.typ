@@ -127,7 +127,7 @@
 
     if course-name != "" {
       text(course-name, size: title-size, weight: "bold")
-      linebreak()
+      v(-2em)
     }
 
     if course-code != "" {
